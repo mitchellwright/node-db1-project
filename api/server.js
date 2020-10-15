@@ -31,4 +31,9 @@ server.put("/api/accounts/:id", async (req, res) => {
   res.json(updatedAccount);
 });
 
+server.delete("/api/accounts/:id", async (req, res) => {
+  await db("accounts").where("id", req.params.id).del();
+  res.status(204).end();
+});
+
 module.exports = server;
